@@ -101,13 +101,13 @@
   {
    "fieldname": "slide_2_primary_action_label",
    "fieldtype": "Data",
-   "label": "Primary Action Label ",
+   "label": "Primary Action Label",
    "reqd": 0
   },
   {
    "fieldname": "slide_2_primary_action",
    "fieldtype": "Data",
-   "label": "Primary Action ",
+   "label": "Primary Action",
    "reqd": 0
   },
   {
