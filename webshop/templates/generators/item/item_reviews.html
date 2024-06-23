@@ -48,12 +48,12 @@
 			const $btn = $(e.currentTarget);
 
 			let d = new frappe.ui.Dialog({
-				title: __("Write a Review"),
+				title: {{ _("Write a Review") }},
 				fields: [
-					{fieldname: "title", fieldtype: "Data", label: "Headline", reqd: 1},
-					{fieldname: "rating", fieldtype: "Rating", label: "Overall Rating", reqd: 1},
+					{fieldname: "title", fieldtype: "Data", label: {{ _("Headline") }}, reqd: 1},
+					{fieldname: "rating", fieldtype: "Rating", label: {{ _("Overall Rating") }}, reqd: 1},
 					{fieldtype: "Section Break"},
-					{fieldname: "comment", fieldtype: "Small Text", label: "Your Review"}
+					{fieldname: "comment", fieldtype: "Small Text", label: {{ _("Your Review") }} }
 				],
 				primary_action: function() {
 					var data = d.get_values();
@@ -66,12 +66,12 @@
 							comment: data.comment
 						},
 						freeze: true,
-						freeze_message: __("Submitting Review ..."),
+						freeze_message: {{ _("Submitting Review ...") }},
 						callback: function(r) {
 							if(!r.exc) {
 								frappe.msgprint({
-									message: __("Thank you for the review"),
-									title: __("Review Submitted"),
+									message: {{ _("Thank you for the review") }},
+									title: {{ _("Review Submitted") }},
 									indicator: "green"
 								});
 								d.hide();
@@ -80,7 +80,7 @@
 						}
 					});
 				},
-				primary_action_label: __('Submit')
+				primary_action_label: {{ _("Submit") }}
 			});
 			d.show();
 		});
