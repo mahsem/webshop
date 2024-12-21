@@ -39,19 +39,19 @@
 	{{ section.section_html }}
 {% elif section.section_based_on == 'Cards' %}
 <section class="container my-5">
-	<h3>{{ section.name }}</h3>
+	<h3>{{ _(section.name) }}</h3>
 
 	<div class="row">
 		{% for card in section.section_cards %}
 		<div class="col-md-{{ section.column_value }} mb-4">
 			<div class="card h-100 justify-content-between">
 				{% if card.image %}
-				<img itemprop="image" class="card-img-top h-75" src="{{ card.image }}" loading="lazy" alt="{{ card.title }}"></img>
+				<img itemprop="image" class="card-img-top h-75" src="{{ card.image }}" loading="lazy" alt="{{ _(card.title) }}"></img>
 				{% endif %}
 				<div itemprop="image" class="card-body">
-					<h5 class="card-title">{{ card.title }}</h5>
-					<p class="card-subtitle mb-2 text-muted">{{ card.subtitle or '' }}</p>
-					<p class="card-text">{{ card.content or '' | truncate(140, True) }}</p>
+					<h5 class="card-title">{{ _(card.title) }}</h5>
+					<p class="card-subtitle mb-2 text-muted">{{ _(card.subtitle) or '' }}</p>
+					<p class="card-text">{{ _(card.content) or '' | truncate(140, True) }}</p>
 				</div>
 				<div class="card-body flex-grow-0">
 					<a href="{{ card.route }}" class="card-link">{{ _('More details') }}</a>
@@ -128,17 +128,17 @@
 	<div class="mt-4">
 		<a href="/{{ item.route or '#' }}">
 			<div class="product-title">
-				{{ title or '' }}
+				{{ _(title) or '' }}
 			</div>
 		</a>
 	</div>
 	{% if is_featured %}
 		<div class="product-description ellipsis text-muted" style="white-space: normal;">
-			{{ description or '' }}
+			{{ _(description) or '' }}
 		</div>
 	{% else %}
 		{% if template != "Product Card" %}
-		<div class="product-category">{{ item.item_group or '' }}</div>
+		<div class="product-category">{{ _(item.item_group) or '' }}</div>
 		{% endif %}
 	{% endif %}
 </div>
@@ -249,7 +249,7 @@
 	<div class="rating-progress-bar-section col-4 ml-4">
 		{% for percent in reviews_per_rating %}
 			<div class="col-sm-4 small rating-bar-title">
-				{{ loop.index }} star
+				{{ loop.index }} {{ _("star") }}
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -298,7 +298,7 @@
 	{%- set item_field =  field_filter[0] %}
 	{%- set values =  field_filter[1] %}
 	<div class="mb-4 filter-block pb-5">
-		<div class="filter-label mb-3">{{ item_field.label }}</div>
+		<div class="filter-label mb-3">{{ _(item_field.label) }}</div>
 
 		{% if values | len > 20 %}
 		<!-- show inline filter if values more than 20 -->
